@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Authenticator } from "@aws-amplify/ui-react";
-import "@aws-amplify/ui-react/styles.css";
 import type { Schema } from "../amplify/data/resource";
 import { generateClient } from "aws-amplify/data";
+import { Authenticator } from "@aws-amplify/ui-react";
+import "@aws-amplify/ui-react/styles.css";
 
 const client = generateClient<Schema>();
 
@@ -27,7 +27,9 @@ function App() {
     <Authenticator>
       {({ signOut, user }) => (
         <main>
-          <h1>{user?.signInDetails?.loginId}'s todos</h1>
+          <h1 className="text-3xl font-bold underline">
+            {user?.signInDetails?.loginId}'s todos
+          </h1>
           <button onClick={createTodo}>+ new</button>
           <ul>
             {todos.map((todo) => (
